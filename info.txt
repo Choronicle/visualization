@@ -1,0 +1,270 @@
+djk_info '贷记卡开户明细'(
+	acct_no          -- 账号
+	card_no          -- 卡号
+	cust_name        -- 客户名称
+	prod_code        -- 产品代码
+	prod_name        -- 产品名称
+	uid              -- 证件号码
+	entp_name        -- 单位名称
+	open_date        -- 开卡日期
+	card_sts         -- 卡片状态
+	card_sts_name    -- 卡片状态名称
+	card_sts_date    -- 卡片状态日期
+	is_withdrw       -- 是否开通取现功能
+	is_transfer      -- 是否开通转账功能
+	is_deposit       -- 是否开通存款功能
+	is_purchse       -- 是否开通消费功能
+	cred_limit       -- 信用额度
+	mob_phone        -- 手机号码
+	deposit          -- 贷记卡存款
+	over_draft       -- 普通额度透支
+	dlay_amt         -- 逾期金额
+	five_class       -- 五级分类
+	bankacct         -- 绑定还款账号
+	bankacct_date    -- 绑定还款账号日期
+	bankacct_bal     -- 还款账号余额
+	is_mob_bank      -- 是否绑定手机银行
+	mob_bank_date    -- 绑定手机银行日期
+	is_etc           -- 是否绑定ETC
+	etc_date         -- 绑定ETC日期
+	issue_mode       -- 发卡模式（申请渠道）
+	issue_mode_name  -- 发卡模式名称
+	bal              -- 余额w
+	active_date      -- 激活日期
+	clsd_date        -- 关闭日期
+	dlay_mths int4 NULL, -- 逾期期数
+	mgr_no           -- 管户人工号
+	mgr_name         -- 管户人名称
+	recom_name       -- 推荐人名称
+	mge_org          -- 管户机构号
+	mge_org_name     -- 管户机构名称
+	etl_dt           -- 数据日期
+)
+djkfq_info '贷记卡分期付款明细'(
+	acct_no          -- 账号
+	card_no          -- 卡号
+	cust_name        -- 客户名称
+	uid              -- 证件号码
+	mob_phone        -- 手机号码
+	mge_org          -- 管户机构号
+	recom_no         -- 推荐人工号
+	mp_number        -- 分期付款序号
+	mp_type          -- 分期类型
+	mp_status        -- 分期付款状态
+	purch_date       -- 消费日期
+	purch_mth        -- 消费月份
+	total_amt        -- 总产品金额
+	total_mths int4 NULL, -- 总分期月数
+	mth_instl        -- 每月摊销分期付款金额
+	instl_cnt int4 NULL, -- 已分期摊销期数
+	rem_ppl          -- 剩余未还本金
+	total_fee        -- 总费用
+	rem_fee          -- 剩余未还费用
+	rec_fee          -- 已收手续费
+	etl_dt           -- 数据日期
+)
+pri_cust_asset_acct_info '存款账号信息'(
+	cust_no          -- 核心客户号
+	cust_name        -- 客户名称
+	uid              -- 证件号码
+	acct_no          -- 账号
+	card_no          -- 卡号
+	curr_type        -- 币种
+	subject_no       -- 科目号
+	prod_type        -- 产品种类
+	term             -- 存款期限
+	rate             -- 利率
+	auto_dp_flg      -- 自动转存标志
+	belong_org       -- 归属机构号
+	exam_org         -- 考核机构号
+	open_org         -- 开户机构
+	open_date        -- 开户日期
+	open_teller_no   -- 开户柜员
+	matu_date        -- 到期日期
+	acct_char        -- 账户性质
+	deps_type        -- 存款种类
+	prod_code        -- 产品代码
+	clsd_org         -- 销户机构
+	clsd_date        -- 销户日期
+	clsd_teller_no   -- 销户柜员
+	is_secu_card     -- 是否社保卡
+	acct_sts         -- 账户状态
+	frz_sts          -- 冻结状态
+	stp_sts          -- 止付状态
+	acct_bal         -- 原币余额
+	bal              -- 余额
+	avg_mth          -- 月日均
+	avg_qur          -- 季度日均
+	avg_year         -- 年日均
+	etl_dt           -- 数据日期
+)
+pri_cust_asset_info '存款汇总信息'(
+	cust_no          -- 核心客户号
+	cust_name        -- 客户名称
+	uid              -- 证件号码
+	belong_org       -- 归属机构号
+	exam_org         -- 考核机构号
+	all_bal          -- 总余额
+	avg_mth          -- 月日均
+	avg_qur          -- 季度日均
+	avg_year         -- 年日均
+	sa_bal           -- 活期余额
+	td_bal           -- 定期余额
+	fin_bal          -- 理财余额
+	sa_crd_bal       -- 卡活期余额
+	td_crd_bal       -- 卡内定期
+	sa_td_bal        -- 定活两便
+	ntc_bal          -- 通知存款
+	td_3m_bal        -- 定期3个月
+	td_6m_bal        -- 定期6个月
+	td_1y_bal        -- 定期1年
+	td_2y_bal        -- 定期2年
+	td_3y_bal        -- 定期3年
+	td_5y_bal        -- 定期5年
+	oth_td_bal       -- 定期其他余额
+	cd_bal           -- 大额存单余额
+	etl_dt           -- 数据日期
+)
+pri_cust_base_info '基本信息'(
+	uid              -- 证件号码
+	cert_type        -- 证件类型
+	cust_no          -- 核心客户号
+	cust_name        -- 客户名称
+	sex              -- 性别
+	birthday         -- 出生日期
+	cer_expd_date    -- 证件有效期
+	marrige          -- 婚姻状况
+	education        -- 教育程度
+	home_phone       -- 家庭电话
+	mob_phone        -- 手机号码
+	home_add         -- 联系地址
+	reg_add          -- 户籍地址
+	career           -- 职业
+	prof_titl        -- 职称
+	country          -- 国籍
+	is_employee      -- 员工标志
+	is_shareholder   -- 是否股东
+	is_black         -- 是否黑名单
+	is_contact       -- 是否关联人
+	mgr_name         -- 管户人名称
+	mgr_no           -- 管户人工号
+	mge_org_name     -- 管户机构名称
+	mge_org          -- 管户机构号
+	create_date      -- 创建日期
+	open_org         -- 开户机构
+	open_teller_no   -- 开户柜员
+	update_date      -- 更新日期
+	update_org       -- 更新机构
+	update_teller_no -- 更新柜员
+	etl_dt           -- 数据日期
+	is_mgr_dep       -- 是否营销部客户
+)
+pri_cust_liab_acct_info '贷款账号信息'(
+	belong_org       -- 归属机构号
+	exam_org         -- 考核机构号
+	cust_no          -- 核心客户号
+	loan_cust_no     -- 信贷客户号
+	cust_name        -- 客户名称
+	uid              -- 证件号码
+	acct_no          -- 账号
+	begin_date       -- 开始日期
+	matu_date        -- 到期日期
+	settle_date      -- 结清日期
+	subject_no       -- 科目号
+	prod_type        -- 产品种类
+	buss_type        -- 业务品种
+	buss_type_name   -- 业务品种名称
+	loan_type        -- 贷款种类
+	float_tpename    -- 利率浮动方式
+	loan_amt         -- 贷款金额
+	loan_bal         -- 贷款余额
+	loan_mgr_no      -- 信贷员工号
+	loan_mgr_name    -- 信贷员名称
+	mgr_phone        -- 信贷员手机号码
+	vouch_type       -- 主要担保方式
+	putout_channel   -- 放款渠道
+	next_repay_date  -- 下次预计还本日期
+	is_mortgage      -- 是否按揭
+	is_online        -- 是否线上贷款
+	is_extend        -- 是否展期
+	extend_date      -- 展期日期
+	ext_matu_date    -- 展期到期日期
+	repay_type       -- 还款方式
+	term_mth         -- 期限月
+	five_class       -- 五级分类
+	overdue_class    -- 逾期细分
+	overdue_flag     -- 逾期标志
+	owed_int_flag    -- 欠息标志
+	contract_no      -- 合同号
+	credit_amt       -- 合同金额
+	credit_begin_date-- 合同起始日期
+	credit_matu_date -- 合同截止日期
+	frst_intr        -- 最初执行利率
+	actu_intr        -- 最新执行利率
+	loan_mob_phone   -- 信贷预留手机号
+	loan_use         -- 贷款用途
+	inte_settle_type -- 结息方式
+	bankacct         -- 还款账号
+	defect_type      -- 贷款瑕疵类型
+	owed_int_in      -- 表内欠息金额
+	owed_int_out     -- 表外欠息金额
+	delay_bal        -- 逾期金额
+	industr_type     -- 行业分类
+	industr_type_name-- 行业分类名称
+	acct_sts         -- 账户状态
+	arti_ctrt_no     -- 人工合同号
+	ext_ctrt_no      -- 展期合同号
+	flst_teller_no   -- 建档柜员号
+	attract_no       -- 吸储号
+	attract_name     -- 吸储人名称
+	loan_use_add     -- 贷款用途补充
+	putout_acct      -- 放款账号
+	is_book_acct     -- 是否授信台账客户
+	book_acct_buss   -- 授信产品
+	book_acct_amt    -- 授信额度
+	sub_buss_type    -- 金丰E贷子产品
+	pro_char         -- 产品性质
+	pro_char_ori     -- 产品性质风控
+	pay_type         -- 支付方式
+	grntr_name       -- 担保人姓名
+	grntr_cert_no    -- 担保人证件号码
+	guar_no          -- 担保物编号
+	guar_right_no    -- 权证号
+	guar_name        -- 担保物名称
+	guar_amount      -- 担保物数量价值
+	guar_add         -- 押品地址
+	guar_eva_value   -- 押品评估值
+	guar_con_value   -- 押品认定价值
+	guar_reg_date    -- 抵押登记日期
+	guar_matu_date   -- 抵押到期日期
+	etl_dt           -- 跑批日期
+)
+pri_cust_liab_info '贷款账户汇总'(
+	uid              -- 证件号码
+	all_bal          -- 总余额
+	bad_bal          -- 不良余额
+	due_intr         -- 欠息总额
+	norm_bal         -- 正常余额
+	delay_bal        -- 逾期总额
+	etl_dt           -- 数据日期
+)
+
+pri_cust_contact_info '联系方式'(
+    uid                  -- 证件号码,
+    con_type             -- 联系类型,
+    contact              -- 联系信息,
+    sys_source           -- 来源系统,
+    create_date          -- 创建日期，
+    update_date          -- 更新日期,
+    etl_dt               -- 数据日期
+)
+
+pri_credit_info '信用等级'(                // 作业三一个方向的重要标签
+	uid              -- 证件号码
+	credit_level     -- 信用等级  // 值设为-1的是你们作业三一个方向要预测的。其他值作为你们的训练集。
+)
+
+pri_star_info '客户星级'(            / 作业三一个方向的重要标签
+	uid              -- 证件号码
+	star_level       -- 客户星级    // 值设为-1的是你们作业三一个方向要预测的。其他值作为你们的训练集。
+)
