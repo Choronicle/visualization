@@ -3,6 +3,8 @@ package com.datainteg.visualization.service;
 import com.datainteg.visualization.mbg.model.DmVAsDjkfqInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.math.BigDecimal;
+
 /**
  * <p>
  * dm_v_as_djkfq_info 服务类
@@ -12,5 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2023-03-28
  */
 public interface IDmVAsDjkfqInfoService extends IService<DmVAsDjkfqInfo> {
-
+    BigDecimal getAmountByMonth(String yearMonth);
 }

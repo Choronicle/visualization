@@ -4,7 +4,10 @@ import com.datainteg.visualization.mbg.model.DmVAsDjkfqInfo;
 import com.datainteg.visualization.mbg.mapper.DmVAsDjkfqInfoMapper;
 import com.datainteg.visualization.service.IDmVAsDjkfqInfoService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
 
 /**
  * <p>
@@ -16,5 +19,11 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class DmVAsDjkfqInfoServiceImpl extends ServiceImpl<DmVAsDjkfqInfoMapper, DmVAsDjkfqInfo> implements IDmVAsDjkfqInfoService {
+    @Autowired
+    private DmVAsDjkfqInfoMapper mapper;
 
+    @Override
+    public BigDecimal getAmountByMonth(String yearMonth) {
+        return mapper.getAmountByMonth(yearMonth);
+    }
 }

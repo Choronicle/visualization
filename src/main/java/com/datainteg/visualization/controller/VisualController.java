@@ -2,10 +2,7 @@ package com.datainteg.visualization.controller;
 
 import com.alibaba.fastjson2.JSONObject;
 import com.datainteg.visualization.json.*;
-import com.datainteg.visualization.service.IEtcInfoService;
-import com.datainteg.visualization.service.ISbybInfoService;
-import com.datainteg.visualization.service.ISdrqInfoService;
-import com.datainteg.visualization.service.IShopInfoService;
+import com.datainteg.visualization.service.*;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +25,8 @@ public class VisualController {
     private ISdrqInfoService sdrqService;
     @Autowired
     private IShopInfoService shopService;
+    @Autowired
+    private IDmVAsDjkfqInfoService installmentService;
 
     @RequestMapping(value = "/byMonth", method = RequestMethod.GET)
     @ResponseBody
@@ -37,6 +36,7 @@ public class VisualController {
         TopSbyb[] sbybTopList = new TopSbyb[12];
         TopSdrq[] sdrqTopList = new TopSdrq[12];
         TopShop[] shopTopList = new TopShop[12];
+        BigDecimal[] installmentAmountList = new BigDecimal[12];
         for(int month = 1; month <= 12; month++){
             StringBuilder yearMonth = new StringBuilder();
             yearMonth.append(year);
@@ -55,6 +55,7 @@ public class VisualController {
             sbybTopList[month - 1] = temp2;
             sdrqTopList[month - 1] = temp3;
             shopTopList[month - 1] = temp4;
+            installmentAmountList[month - 1] = installmentService.getAmountByMonth(yearMonthString);
         }
         Map<String,Object> map = new HashMap<>();
         map.put("dataArray", res);
@@ -62,6 +63,7 @@ public class VisualController {
         map.put("sbybTopList", sbybTopList);
         map.put("sdrqTopList", sdrqTopList);
         map.put("shopTopList", shopTopList);
+        map.put("installmentList", installmentAmountList);
         return new JSONObject(map);
     }
 }
