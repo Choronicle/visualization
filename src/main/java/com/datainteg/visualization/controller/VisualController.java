@@ -25,8 +25,6 @@ public class VisualController {
     private ISdrqInfoService sdrqService;
     @Autowired
     private IShopInfoService shopService;
-    @Autowired
-    private IDmVAsDjkfqInfoService installmentService;
 
     @RequestMapping(value = "/byMonth", method = RequestMethod.GET)
     @ResponseBody
@@ -36,12 +34,13 @@ public class VisualController {
         TopSbyb[] sbybTopList = new TopSbyb[12];
         TopSdrq[] sdrqTopList = new TopSdrq[12];
         TopShop[] shopTopList = new TopShop[12];
-        BigDecimal[] installmentAmountList = new BigDecimal[12];
         for(int month = 1; month <= 12; month++){
             StringBuilder yearMonth = new StringBuilder();
             yearMonth.append(year);
+            yearMonth.append('%');
             if(month < 10)yearMonth.append('0');
             yearMonth.append(month);
+            yearMonth.append("%__");
             String yearMonthString = yearMonth.toString();
             res[0][month - 1] = etcService.getAmountByMonth(yearMonthString);
             res[1][month - 1] = sbybService.getAmountByMonth(yearMonthString);
@@ -55,7 +54,6 @@ public class VisualController {
             sbybTopList[month - 1] = temp2;
             sdrqTopList[month - 1] = temp3;
             shopTopList[month - 1] = temp4;
-            installmentAmountList[month - 1] = installmentService.getAmountByMonth(yearMonthString);
         }
         Map<String,Object> map = new HashMap<>();
         map.put("dataArray", res);
@@ -63,7 +61,6 @@ public class VisualController {
         map.put("sbybTopList", sbybTopList);
         map.put("sdrqTopList", sdrqTopList);
         map.put("shopTopList", shopTopList);
-        map.put("installmentList", installmentAmountList);
         return new JSONObject(map);
     }
 }
